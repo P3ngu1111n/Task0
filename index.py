@@ -8,6 +8,7 @@ from http.server import BaseHTTPRequestHandler
 
 app = FastAPI()
 @app.get('/')
+app = Flask(__name__)
 
 class SimpleCORSHandler(http.server.BaseHTTPRequestHandler):
     def end_headers(self):
