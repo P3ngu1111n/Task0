@@ -50,7 +50,7 @@ app.add_middleware(
 
 base_url = "https://api.genderize.io?"
 
-genderize_name = ""
+genderize_name = "Zenith"
 def get_resource_info(name):
     url = f"{base_url}name={genderize_name}"
     response = requests.get(url)
