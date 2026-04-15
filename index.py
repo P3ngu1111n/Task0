@@ -5,6 +5,29 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from http.server import BaseHTTPRequestHandler
 
+class SimpleCORSHandler(http.server.BaseHTTPRequestHandler):
+    def end_headers(self):
+        # This sends the CORS header for every response
+        self.send_header('Access-Control-Allow-Origin', '*')
+        super().end_headers()
+
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(b"Hello! This response is CORS-enabled.")
+
+    def do_OPTIONS(self):
+        # Browsers send an OPTIONS request (preflight) before some cross-origin requests
+        self.send_response(200, "OK")
+        self.end_headers()
+
+if __name__ == '__main__':
+    server_address = ('', 8000)
+    httpd = http.server.HTTPServer(server_address, SimpleCORSHandler)
+    print("Serving on port 8000 with CORS enabled...")
+    httpd.serve_forever()
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
