@@ -47,6 +47,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/')
+
+def genderize():
 
 base_url = "https://api.genderize.io?"
 
