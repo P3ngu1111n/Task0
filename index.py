@@ -6,6 +6,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from http.server import BaseHTTPRequestHandler
 
+app = FastAPI()
+@app.get('/')
+
 class SimpleCORSHandler(http.server.BaseHTTPRequestHandler):
     def end_headers(self):
         # This sends the CORS header for every response
@@ -37,7 +40,7 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write('Hello from pure Python on Vercel!'.encode('utf-8'))
         return
 
-app = FastAPI()
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -47,7 +50,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get('/')
+
 
 def genderize():
 
