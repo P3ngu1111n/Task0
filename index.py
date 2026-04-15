@@ -59,7 +59,7 @@ def get_resource_info(name):
         genderize_data = response.json()
         return genderize_data
     else:
-        print: f"theres an issue with the get_resource_info function"
+        return f"theres an issue with the get_resource_info function"
 
 url = f"{base_url}name={genderize_name}"
 response = requests.get(url)
@@ -96,7 +96,7 @@ if response.status_code == 200:
             "error_message": error_message
         }
         error_json = json.dumps(error_data, indent=3)
-        print(error_json)
+        return error_json
     else:
         result_data = {
             "status": response_stat,
@@ -110,7 +110,7 @@ if response.status_code == 200:
             }
         }
         result_json = json.dumps(result_data,  indent=4)
-        print(result_json)
+        return result_json
 
 elif response.status_code == 400:
         response_stat = "error 400:Bad Request"
@@ -122,7 +122,7 @@ elif response.status_code == 400:
         }
 
         error_json =json.dumps(error_data, indent=3)
-        print (error_json)
+        return error_json
 
 elif response.status_code == 422:
         response_stat = "error 422:Unprocessable Entity"
@@ -134,7 +134,7 @@ elif response.status_code == 422:
         }
 
         error_json = json.dumps(error_data, indent=3)
-        print(error_json)
+        return error_json
 
 elif response.status_code == 500:
         response_stat = "error 500:Internal Server Error "
@@ -146,7 +146,7 @@ elif response.status_code == 500:
         }
 
         error_json = json.dumps(error_data, indent=3)
-        print(error_json)
+        return error_json
 
 elif response.status_code == 502:
         response_stat = "error 502:Bad Gateway"
@@ -158,7 +158,7 @@ elif response.status_code == 502:
         }
 
         error_json = json.dumps(error_data, indent=3)
-        print(error_json)
+        return error_json
 
 else:
         print (f"breh this is the respose its showing: {response} fix it")
