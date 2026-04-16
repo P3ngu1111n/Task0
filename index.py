@@ -8,7 +8,7 @@ from http.server import BaseHTTPRequestHandler
 
 app = FastAPI()
 @app.get('/')
-handler = app
+
 def genderize():
 
     class SimpleCORSHandler(http.server.BaseHTTPRequestHandler):
