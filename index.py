@@ -14,7 +14,6 @@ async def root():
     except Exception as e:
         print(f"Error occurred: {e}")
         raise e
-```
 
 def genderize():
 
