@@ -8,13 +8,6 @@ from http.server import BaseHTTPRequestHandler
 
 app = FastAPI()
 @app.get('/')
-async def root():
-    try:
-        # your logic here
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        raise e
-
 def genderize():
 
     class SimpleCORSHandler(http.server.BaseHTTPRequestHandler):
